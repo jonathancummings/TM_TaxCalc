@@ -158,14 +158,11 @@ server <- function(input, output) {   # code to create output using render
     }
     arts<-arts %>%
       mutate(Tax=Cost/1000*input$AssessedValue)
-    # arts$Cost <- sprintf("%.3f",arts$Cost)
-    # arts$Tax_If_Passed <- sprintf("%.2f",arts$Tax_If_Passed)
     maxTax<-maxCost/1000*input$AssessedValue
     R.Tax<-sum(arts$Cost/1000*arts$Use.R*input$AssessedValue)
     Pro.Tax<-sum(arts$Cost/1000*arts$Use.P*input$AssessedValue)
     TTax<-maxTax-R.Tax
     Pass.Tax<-abs(maxTax-R.Tax-Pro.Tax)
-    #arts.calc<-(list(arts=arts,maxTax=maxTax,R.Tax=R.Tax,Pro.Tax=Pro.Tax,TTax=TTax,Pass.Tax=Pass.Tax))
     return(list(arts=arts,maxTax=maxTax,R.Tax=R.Tax,Pro.Tax=Pro.Tax,TTax=TTax,Pass.Tax=Pass.Tax))
   })# Code to do all calculations for subsequent output here, not working currently
 
