@@ -54,107 +54,17 @@ server <- function(input, output) {   # code to create output using render
   # Update tax tibble based on voting results
   arts.calc<-reactive({
     arts<-arts
-    # for(i in 1:nrow(arts)){
-    #   inputuse<-paste0("input$Art",as.character(i))
-    #   if(inputuse=="Passed"){
-    #     arts$Status[i]="Passed"
-    #     arts$Use.P[i]<-0
-    #   }
-    #   if(inputuse=="Rejected"){
-    #     arts$Status[i]="Rejected"
-    #     arts$Use.P[i]<-0
-    #     arts$Use.R[i]<-1
-    #   }
-    # }
-    if(input$Art1=="Passed"){
-      arts$Status[1]="Passed"
-      arts$Use.P[1]<-0
-    }
-    if(input$Art2=="Passed"){
-      arts$Status[2]="Passed"
-      arts$Use.P[2]<-0
-    }
-    if(input$Art3=="Passed"){
-      arts$Status[3]="Passed"
-      arts$Use.P[3]<-0
-    }
-    if(input$Art4=="Passed"){
-      arts$Status[4]="Passed"
-      arts$Use.P[4]<-0
-    }
-    if(input$Art5=="Passed"){
-      arts$Status[5]="Passed"
-      arts$Use.P[5]<-0
-    }
-    if(input$Art6=="Passed"){
-      arts$Status[6]="Passed"
-      arts$Use.P[6]<-0
-    }
-    if(input$Art7=="Passed"){
-      arts$Status[7]="Passed"
-      arts$Use.P[7]<-0
-    }
-    if(input$Art8=="Passed"){
-      arts$Status[8]="Passed"
-      arts$Use.P[8]<-0
-    }
-    if(input$Art9=="Passed"){
-      arts$Status[9]="Passed"
-      arts$Use.P[9]<-0
-    }
-    if(input$Art10=="Passed"){
-      arts$Status[10]="Passed"
-      arts$Use.P[10]<-0
-    }
-    if(input$Art1=="Rejected"){
-      arts$Status[1]="Rejected"
-      arts$Use.P[1]<-0
-      arts$Use.R[1]<-1
-    }
-    if(input$Art2=="Rejected"){
-      arts$Status[2]="Rejected"
-      arts$Use.P[2]<-0
-      arts$Use.R[2]<-1
-    }
-    if(input$Art3=="Rejected"){
-      arts$Status[3]="Rejected"
-      arts$Use.P[3]<-0
-      arts$Use.R[3]<-1
-    }
-    if(input$Art4=="Rejected"){
-      arts$Status[4]="Rejected"
-      arts$Use.P[4]<-0
-      arts$Use.R[4]<-1
-    }
-    if(input$Art5=="Rejected"){
-      arts$Status[5]="Rejected"
-      arts$Use.P[5]<-0
-      arts$Use.R[5]<-1
-    }
-    if(input$Art6=="Rejected"){
-      arts$Status[6]="Rejected"
-      arts$Use.P[6]<-0
-      arts$Use.R[6]<-1
-    }
-    if(input$Art7=="Rejected"){
-      arts$Status[7]="Rejected"
-      arts$Use.P[7]<-0
-      arts$Use.R[7]<-1
-    }
-    if(input$Art8=="Rejected"){
-      arts$Status[8]="Rejected"
-      arts$Use.P[8]<-0
-      arts$Use.R[8]<-1
-    }
-    if(input$Art9=="Rejected"){
-      arts$Status[9]="Rejected"
-      arts$Use.P[9]<-0
-      arts$Use.R[9]<-1
-    }
-    if(input$Art10=="Rejected"){
-      arts$Status[10]="Rejected"
-      arts$Use.P[10]<-0
-      arts$Use.R[10]<-1
+    status_list<-lapply(1:nrow(arts), function(i) {input[[paste0('Art',i)]]})
+    for (i in 1:nrow(arts)) {
+      if (status_list[[i]] == "Passed") {
+        arts$Status[i]="Passed"
+        arts$Use.P[i]<-0
+      }
+      else if (status_list[[i]] == "Rejected") {
+        arts$Status[i]="Rejected"
+        arts$Use.P[i]<-0
+        arts$Use.R[i]<-1
+      }
     }
     arts<-arts %>%
       mutate(Tax=Cost/1000*input$AssessedValue)
