@@ -15,7 +15,7 @@ maxCost<-sum(arts$Cost)
 
 ui <- fluidPage(
   theme = shinytheme("readable"),
-  headerPanel("Nottingham, NH Tax Calculation App"),# title of the page
+  headerPanel("Nottingham, NH Town Meeting Tax Calculation App"),# title of the page
   hr(),
   p("This app calculate your estimated property taxes resulting from articles
     up for a vote at Town Meeting."),
