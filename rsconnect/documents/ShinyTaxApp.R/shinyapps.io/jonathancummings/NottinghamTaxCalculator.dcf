@@ -5,8 +5,8 @@ account: jonathancummings
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 614030
-bundleId: 1899692
+bundleId: 1937815
 url: https://jonathancummings.shinyapps.io/NottinghamTaxCalculator/
-when: 1551147550.72603
+when: 1552513333.10461
 asMultiple: FALSE
 asStatic: FALSE

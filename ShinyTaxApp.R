@@ -21,9 +21,8 @@ ui <- fluidPage(
     up for a vote at Town Meeting."),
   p("If you find this application useful please
     consider a donation to offset the web hosting costs required to keep the 
-    application running."),
-  a(href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=KQLVYHWWYVS9S&source=url",
-    "(Donate)"),
+    application running:",a(href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=KQLVYHWWYVS9S&source=url",
+    "(Donate)")),
   hr(),
   sidebarLayout( # page will have a side bar and then a main section on the page 
     sidebarPanel( # format sidebar inputs
