@@ -29,7 +29,10 @@ ui <- navbarPage(title = "Town Tax App",
       therefore are likely incorrect estimates."),
     p("The", strong("Nottingham TM-Day"), "tab provides the estimated tax rates and impacts given
       an assessed value for the warrant articles voted upon on town meeting day.  As of 3/18/2019
-      the rates displayed are for the articles voted on at the 3/12/2019 town meeting.")
+      the rates displayed are for the articles voted on at the 3/12/2019 town meeting."),
+    p("* The estimated taxes come from town reporting providing a comparative guide to the cost
+      of each article if passed and therefore are estimated rates and will likely differ from
+      the realized rates.")
   ), # end tabPanel 1
   tabPanel("Nottingham, NH Tax History",
     h1("Nottingham, NH Tax History and Current Year Estimated Taxes"),# title of the page
@@ -54,16 +57,24 @@ ui <- navbarPage(title = "Town Tax App",
         tableOutput("taxRateHist"),
         p("Estimated tax history based on assessed value:"),
         tableOutput("taxHist"),
-        p("Note that the 2019E values are likely underestimates because the town passed
-        articles increasing both the tax credits provided to veterans and the number of
-        individuals eligible for those credits.")
+        p("* The 2019E values are only a comparative guide based on town estimates supplied
+        with the articles. The 2019E values don't account for many factors likely to 
+        result in rates differing from the estimates. The town passed articles increasing
+        both the tax credits provided to veterans and the number of individuals eligible for
+        those credits. The total taxable assessed value used to create the estimates use
+        last year's values, but this year's tax base may differ with new buildings and
+        property improvements or depreciation. Other unknowns are the amount of offsetting
+        revenues, state aid, grants, and selectmen contributing money from unassigned funds,
+        as well as the state school and county rates.
+        Setting the tax rate is a complicated process administered by the State of New
+        Hampshire each fall. (Reference the MS-1 in the Town Report)")
       ) # end mainPanel
     ) # end sidebarLayout
   ), # end tabPanel
   tabPanel("Nottingham TM-Day",
   theme = shinytheme("readable"),
   h1("Nottingham, NH Town Meeting Tax Calculation App"),# title of the page
-  p("This app calculate your estimated property taxes resulting from articles
+  p("This app calculate your estimated* property taxes resulting from articles
     up for a vote at Town Meeting."),
   hr(),
   sidebarLayout( # page will have a side bar and then a main section on the page 
@@ -92,7 +103,10 @@ ui <- navbarPage(title = "Town Tax App",
       width=8,
       DT::dataTableOutput("Taxes"),
       textOutput("Text1"),
-      htmlOutput("Text2")
+      htmlOutput("Text2"),
+      p("* The estimate on the warrant articles is only a comparative guide to the
+        impact of each article if passed. The actual impact may differ due to changes
+        in the tax base and other state and local budget decisions.")
       ) # end mainPanel
     ) # end sidebarLayout
   ) # end tabPanel
