@@ -53,7 +53,10 @@ ui <- navbarPage(title = "Town Tax App",
         p("Tax rates per $1000 of assessed value:"), 
         tableOutput("taxRateHist"),
         p("Estimated tax history based on assessed value:"),
-        tableOutput("taxHist")
+        tableOutput("taxHist"),
+        p("Note that the 2019E values are likely underestimates because the town passed
+        articles increasing both the tax credits provided to veterans and the number of
+        individuals eligible for those credits.")
       ) # end mainPanel
     ) # end sidebarLayout
   ), # end tabPanel
